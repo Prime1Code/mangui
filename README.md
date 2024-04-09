@@ -67,5 +67,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-For more information, visit our [website](https://github.com/Prime1Code/mongodb-ui) or check out
-our [GitHub repository](https://github.com/Prime1Code/mongodb-ui).
+For more information, visit our [website](https://github.com/Prime1Code/mangui) or check out
+our [GitHub repository](https://github.com/Prime1Code/mangui).
