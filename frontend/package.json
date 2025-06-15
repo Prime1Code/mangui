@@ -6,6 +6,7 @@
   "//": "override versions of nth-check and postcss to fix security vulnerabilities with react-scripts 5.0.1, see overrides at end",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@tailwindcss/postcss": "^4.1.10",
     "nth-check": "^2.1.1",
     "postcss": "^8.5.3",
     "react": "^19.1.0",
