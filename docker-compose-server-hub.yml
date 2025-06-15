@@ -11,7 +11,7 @@ services:
     ports:
       - "127.0.0.1:27017:27017"
     networks:
-      - mangui
+      - mangui_mangui
 
   mangui-backend:
     image: prime1docker/mangui-backend:latest
@@ -27,7 +27,7 @@ services:
       - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
       - MANGUI_JWT_SECRET=${MANGUI_JWT_SECRET_VALUE}
     networks:
-      - mangui
+      - mangui_mangui
     restart: always
 
   mangui-frontend:
@@ -43,7 +43,7 @@ services:
       - VIRTUAL_PORT=3000
       - VIRTUAL_PATH=/
     networks:
-      - mangui
+      - mangui_mangui
     restart: always
 
   nginx-proxy:
@@ -56,7 +56,7 @@ services:
       - ${PWD}/conf:/etc/nginx/conf.d
       - ${PWD}/vhost:/etc/nginx/vhost.d:rw
       - html:/usr/share/nginx/html
-      - certs:/etc/nginx/certs:ro
+      - ./certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
     environment:
       - DHPARAM_SKIP=true
@@ -64,7 +64,7 @@ services:
       - mangui-backend
       - mangui-frontend
     networks:
-      - mangui
+      - mangui_mangui
     restart: always
 
   lets-encrypt:
@@ -73,7 +73,7 @@ services:
     volumes_from:
       - nginx-proxy
     volumes:
-      - certs:/etc/nginx/certs:rw
+      - ./certs:/etc/nginx/certs:rw
       - acme:/etc/acme.sh
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
@@ -81,7 +81,7 @@ services:
     depends_on:
       - nginx-proxy
     networks:
-      - mangui
+      - mangui_mangui
     restart: always
 
 volumes:
@@ -92,4 +92,5 @@ volumes:
   acme:
 
 networks:
-  mangui:
+  mangui_mangui:
+    external: true

@@ -50,7 +50,7 @@ cd mangui
 
 ### Using pre-built Docker images
 
-Create a folder structure like this. <br>
+Your folder structure should already look like this. <br>
 The project comes with all the `necessary` files in the corresponding folders.
 
 ```
@@ -58,7 +58,7 @@ The project comes with all the `necessary` files in the corresponding folders.
 │  ├── certs
 │  ├── conf
 │  │   └── client_max_body_size.conf
-│  ├── Docker-compose-server-hub.yml
+│  ├── docker-compose-server-hub.yml
 │  ├── .env
 │  ├── vhost
 │  │   ├── default
@@ -67,10 +67,19 @@ The project comes with all the `necessary` files in the corresponding folders.
 
 Start your Mangui app with the following CLI command
 ```sh
-Docker-compose -f Docker-compose-server-hub.yml up --force-recreate -d
+docker compose -f docker-compose-server-hub.yml up --force-recreate -d
 ```
 
-#### And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
+### Troubleshooting Connectivity to Your Mangui Instance
+
+If you're experiencing issues connecting to your Mangui instance, consider the following checks:
+
+- **Domain Configuration:** Verify that your subdomain is properly registered with your domain provider.
+- **HTTPS Access:** Ensure that your Mangui frontend is accessible via HTTPS (e.g., `https://subdomain.yourdomain.com/`).
+- **MongoDB Port Mapping:** Confirm that the port mapping for your MongoDB container is correctly configured (e.g., `127.0.0.1:27017->27018`).
+- **Docker Network:** Make sure all containers are part of the same Docker network. By default, the setup script creates a network named `mangui_mangui`. This network must be explicitly defined for each container in your `docker-compose-server-hub.yml` file.
+
+## And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
 
 
 ### Using frontend and backend build artifcats
@@ -92,7 +101,7 @@ Create a folder structure that looks like this:
 │   ├── certs
 │   ├── conf
 │   │   └── client_max_body_size.conf
-│   ├── Docker-compose-server.yml
+│   ├── docker-compose-server.yml
 │   ├── .env
 │   ├── nginx_fe
 │   │   ├── build
@@ -141,12 +150,12 @@ Edit the `.env` file to configure the necessary properties for the backend app a
 nano .env
 ```
 
-`Optionally` edit the `Docker-compose-server.yml` file to configure volumes or ports if needed.
+`Optionally` edit the `docker-compose-server.yml` file to configure volumes or ports if needed.
 <details>
   <summary><strong>Optional</strong></summary>
 
 ```sh
-nano Docker-compose-server.yml
+nano docker-compose-server.yml
 ```
 
 </details>
@@ -157,6 +166,6 @@ nano Docker-compose-server.yml
 ./createDockerImagesAndRun.sh
 ```
 
-#### And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
+## And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
 
 ### [back](../README.md)
