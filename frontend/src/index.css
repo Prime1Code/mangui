@@ -4,26 +4,26 @@
 
 html,
 body {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 body {
-  background-color: #f5f5f5;
-  padding-top: 80px;
-  transition: background-color 0.3s ease;
+    background-color: #f5f5f5;
+    padding-top: 80px;
+    transition: background-color 0.3s ease;
 }
 
 .dark body {
-  background-color: theme('colors.dark.bg');
-  color: theme('colors.dark.text');
+    background-color: theme('colors.dark.bg');
+    color: theme('colors.dark.text');
 }
 
 #root {
-  width: 100%;
+    width: 100%;
 }
 
 /* Add subtle border styling for all panels/cards */
 .subtle-border {
-  @apply border border-gray-100 dark:border-gray-800 shadow-sm;
+    @apply border border-gray-100 dark:border-gray-800 shadow-sm;
 }
